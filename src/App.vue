@@ -13,11 +13,11 @@ export default {
   name: 'App',
   components: {
     Header,
-    MessageArea
+    MessageArea,
   },
   data() {
     return{
-      name: ""
+      
     }
   }
 }

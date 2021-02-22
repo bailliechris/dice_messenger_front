@@ -43,7 +43,8 @@ export default {
       name: "",
       temp_name: "",
       msg_send: "",
-      all_posts: []
+      all_posts: [],
+      interval_refreshid:0
     }
   },
   methods: {
@@ -85,7 +86,31 @@ export default {
                     this.all_posts = res.data;
                 }
             })
+      },
+
+      interval_refresh: function() {
+        this.interval_refreshid = setInterval(() => {
+              var config = {
+              method: 'get',
+              url: 'http://localhost:3000/posts/' 
+            };
+
+            axios(config)
+              .then((res) => {
+                  if (res.status == 200) {
+                      this.all_posts = res.data;
+                  }
+              })
+        }, 5000);
       }
+  },
+
+  mounted() {
+    this.interval_refresh();
+  },
+
+  beforedestroy() {
+    clearInterval(this.interval_refreshid);
   }
 }
 </script>

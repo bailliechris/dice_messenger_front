@@ -1,17 +1,7 @@
 <template>
     <div class="card">
     <div class="card-content">
-        <div class="media">
-        <div class="media-content">
-            <p class="title is-6">{{post.name}}</p>
-        </div>
-        </div>
-
-        <div class="subtitle is-6">
-        {{post.msg}} 
-        <br>
-        <time>{{post.time}}</time>
-        </div>
+        <br class="title is-6">{{post.name}} || {{post.msg}}
     </div>
     </div>
 </template>
