@@ -56,7 +56,7 @@ export default {
 
           var config = {
               method: 'post',
-              url: 'http://localhost:3000/posts/add',
+              url: 'https://dice-messenger.herokuapp.com/posts/add',
               data: {
                       name: this.name,
                       msg: this.msg_send
@@ -77,7 +77,7 @@ export default {
 
           var config = {
               method: 'get',
-              url: 'http://localhost:3000/posts/' 
+              url: 'https://dice-messenger.herokuapp.com/posts/' 
           };
 
           await axios(config)
@@ -92,7 +92,7 @@ export default {
         this.interval_refreshid = setInterval(() => {
               var config = {
               method: 'get',
-              url: 'http://localhost:3000/posts/' 
+              url: 'https://dice-messenger.herokuapp.com/posts/' 
             };
 
             axios(config)
