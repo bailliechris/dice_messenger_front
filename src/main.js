@@ -1,18 +1,21 @@
 import Vue from 'vue'
-import VueSocketIO from 'vue-socket.io';
+//import VueSocketIO from 'vue-socket.io'
+//import * as io from 'socket.io-client'
 import App from './App.vue'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 
 Vue.config.productionTip = false
 
-// Setting up Socket.io
+/*
 Vue.use(new VueSocketIO({
-  debug: true,
+  debug: false,
   connection: 'http://localhost:3000',
-  options: { path: "/socket" } //Optional options
+  options: { path: "/" } //Optional options
 }))
+*/
 
+//Vue.use(VueSocketIO, io('http://localhost:3000'))
 
 Vue.use(Buefy)
 

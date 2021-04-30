@@ -11,7 +11,7 @@
           <b-input v-model="msg_send"></b-input>
       </b-field>
       <section>
-          <b-button @click="ws_send">Send</b-button>
+          <b-button @click="send_message">Send</b-button>
       </section>
       <section>
           <b-button @click="refresh">Refresh</b-button>
@@ -43,47 +43,12 @@ export default {
       name: "",
       temp_name: "",
       msg_send: "",
-      all_posts: [],
-      ws: null
-    }
-  },
-  created() {
-    // Initialise the ws connection
-    console.log("Starting connection to WebSocket Server");
-    this.ws = new WebSocket('ws://localhost:3000');
-  },
-  watch: {
-    ws: function() {
-      this.ws.onmessage = (event) =>  {
-          console.log("Received a message");
-          console.log(typeof event.data);
-          console.log(event.data);
-          let message = JSON.parse(event.data);
-          console.log(message);
-          this.all_posts.push(message);
-      }
-
-      this.ws.onopen = (event) => {
-          console.log("Talking to server");
-          console.log(event);
-          //this.ws.send("Hi from client");
-      }
+      all_posts: []
     }
   },
   methods: {
       confirm_name: function() {
-        this.name = this.temp_name;
-      },
-      ws_send: function () {
-        let data = {
-          name: this.name,
-          msg: this.msg_send,
-          time: Date.now()
-        }
-
-        let sent = JSON.stringify(data)
-        this.ws.send(sent);
-        this.msg_send = "";
+          this.name = this.temp_name;
       },
       send_message: async function(e) {
           e.preventDefault();
