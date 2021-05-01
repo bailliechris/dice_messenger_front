@@ -13,9 +13,6 @@
       <section>
           <b-button @click="ws_send">Send</b-button>
       </section>
-      <section>
-          <b-button @click="refresh">Refresh</b-button>
-      </section>
     </div>
     <div v-else>
       <h1>Please add your name:</h1>
@@ -31,7 +28,6 @@
 
 <script>
 import Post from './Post';
-import axios from 'axios';
 
 export default {
   name: 'MessageArea',
@@ -56,10 +52,8 @@ export default {
     ws: function() {
       this.ws.onmessage = (event) =>  {
           console.log("Received a message");
-          console.log(typeof event.data);
-          console.log(event.data);
           let message = JSON.parse(event.data);
-          console.log(message);
+//          console.log(message);
           this.all_posts.push(message);
       }
 
@@ -84,42 +78,6 @@ export default {
         let sent = JSON.stringify(data)
         this.ws.send(sent);
         this.msg_send = "";
-      },
-      send_message: async function(e) {
-          e.preventDefault();
-
-          var config = {
-              method: 'post',
-              url: 'http://localhost:3000/posts/add',
-              data: {
-                      name: this.name,
-                      msg: this.msg_send
-              }      
-          };
-
-          await axios(config)
-            .then((res) => {
-                if (res.status == 200) {
-                    this.all_posts = res.data;
-                    this.msg_send = "";
-                }
-            })
-      },
-
-      refresh: async function(e) {
-          e.preventDefault();
-
-          var config = {
-              method: 'get',
-              url: 'http://localhost:3000/posts/' 
-          };
-
-          await axios(config)
-            .then((res) => {
-                if (res.status == 200) {
-                    this.all_posts = res.data;
-                }
-            })
       }
   }
 }

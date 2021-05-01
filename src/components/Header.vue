@@ -3,10 +3,10 @@
     <section class="hero is-link">
       <div class="hero-body">
         <p class="title">
-          Rolling and Chat List
+          Rolling and Chat
         </p>
         <p class="subtitle">
-          Type roll to generate a D100
+          Message, roll10 or roll100
         </p>
       </div>
     </section>
