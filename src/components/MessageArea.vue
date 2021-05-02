@@ -46,7 +46,7 @@ export default {
   created() {
     // Initialise the ws connection
     console.log("Starting connection to WebSocket Server");
-    this.ws = new WebSocket('ws://localhost:3000');
+    this.ws = new WebSocket('wss://dice-messenger.herokuapp.com/');
   },
   watch: {
     ws: function() {
