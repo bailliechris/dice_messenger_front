@@ -4,8 +4,7 @@
         <div class="media">
             <div class="media-content">
                 <p class="title is-5">{{post.name}}</p>
-                <p class="subtitle is-5"><time>{{time}}</time>||{{post.msg}}</p>
-                
+                <p class="subtitle is-5"><time>{{time}}</time>||{{post.msg}}</p>                
             </div>
         </div>
     </div>

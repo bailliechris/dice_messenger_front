@@ -58,9 +58,15 @@ export default {
       }
 
       this.ws.onopen = (event) => {
-          console.log("Talking to server");
-          console.log(event);
-          //this.ws.send("Hi from client");
+        let data = {
+          name: this.name,
+          type: "open",
+          msg: "",
+          time: Date.now()
+        }
+
+        let sent = JSON.stringify(data)
+        this.ws.send(sent);
       }
     }
   },
