@@ -102,7 +102,7 @@ export default {
   methods: {
       confirm_name: function() {
         this.name = this.temp_name;
-        this.ws = new WebSocket('ws://localhost:3000');
+        this.ws = new WebSocket('wss://dice-messenger.herokuapp.com/');
       },
       ws_send: function () {
         let data = {
