@@ -3,10 +3,10 @@
     <section class="hero is-link">
       <div class="hero-body">
         <p class="title">
-          Rolling and Chat
+          RPG Instant Messenger
         </p>
         <p class="subtitle">
-          Message, roll10 or roll100
+          Type help for ideas
         </p>
       </div>
     </section>
