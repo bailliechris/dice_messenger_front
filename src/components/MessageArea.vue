@@ -103,6 +103,7 @@ export default {
       confirm_name: function() {
         this.name = this.temp_name;
         this.ws = new WebSocket('wss://dice-messenger.herokuapp.com/');
+        //this.ws = new WebSocket('ws://localhost:3000');
       },
       ws_send: function () {
         let data = {
