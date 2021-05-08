@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="hero is-link">
+    <section class="hero is-info">
       <div class="hero-body">
         <p class="title">
           RPG Instant Messenger

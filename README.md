@@ -1,4 +1,6 @@
-# front
+# RPG Messenger
+The front end for RPG Messenger
+Exploring Buefy and Vue methods with WebSockets
 
 ## Project setup
 ```

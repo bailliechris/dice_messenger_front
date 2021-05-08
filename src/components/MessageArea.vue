@@ -1,5 +1,13 @@
 <template>
   <div>
+    <section class="box">
+        <p>Users Connected:</p>
+        <div class="buttons">
+          <b-button class="name" v-for="(name, index) in all_users"
+          v-bind:key="index"
+          >{{ name }}</b-button>
+        </div>
+    </section>
     <div v-if="name">
       <Post
         v-for="post in all_posts"
@@ -11,13 +19,7 @@
           <b-input v-model="msg_send"></b-input>
       </b-field>
       <section>
-        <b-button @click="ws_send">Send</b-button>
-      </section>
-      <section class="box">
-        <p>Users Connected:</p>
-        <p v-for="(name, index) in all_users"
-        v-bind:key="index"
-        >{{ name }}</p> 
+        <b-button native-type="submit" @click="ws_send">Send</b-button>
       </section>
     </div>
     <div v-else>
@@ -26,7 +28,7 @@
           <b-input v-model="temp_name"></b-input>
       </b-field>
       <section>
-          <b-button @click="confirm_name">NEXT!</b-button>
+          <b-button native-type="submit" @click="confirm_name">NEXT!</b-button>
       </section>    
     </div>    
   </div>
@@ -49,12 +51,6 @@ export default {
       all_users: [],
       ws: null
     }
-  },
-  created() {
-    // Initialise the ws connection
-    console.log("Starting connection to WebSocket Server");
-    //this.ws = new WebSocket('wss://dice-messenger.herokuapp.com/');
-    //this.ws = new WebSocket('ws://localhost:3000');
   },
   watch: {
     ws: function() {
@@ -100,12 +96,14 @@ export default {
     }
   },
   methods: {
-      confirm_name: function() {
+      confirm_name: function(e) {
+        e.preventDefault();
         this.name = this.temp_name;
         this.ws = new WebSocket('wss://dice-messenger.herokuapp.com/');
         //this.ws = new WebSocket('ws://localhost:3000');
       },
-      ws_send: function () {
+      ws_send: function (e) {
+        e.preventDefault();
         let data = {
           name: this.name,
           type: "message",
@@ -123,5 +121,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-
+#name {
+  padding:5px
+}
 </style>

@@ -1,14 +1,12 @@
 <template>
-    <div class="card">
-    <div class="card-content">
-        <div class="media">
-            <div class="media-content">
-                <p class="title is-5">{{post.name}}</p>
-                <p class="subtitle is-5"><time>{{time}}</time>||{{post.msg}}</p>                
-            </div>
-        </div>
-    </div>
-    </div>
+    <section>
+        <b-message>
+            <template #header>
+                {{post.name}} <b-tag>{{time}}</b-tag>
+            </template>
+            {{post.msg}}
+        </b-message>    
+    </section>
 </template>
 
 <script>
@@ -24,6 +22,8 @@ export default {
             return timeToShow.toLocaleTimeString();
         }
     }
-
 }
 </script>
+<style scoped>
+
+</style>
