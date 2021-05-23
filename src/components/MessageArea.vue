@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="box">
-        <p>Users Connected:</p>
+        <p>Users Connected: {{wait_message}}</p>
         <div class="buttons">
           <b-button class="name" v-for="(name, index) in all_users"
           v-bind:key="index"
@@ -49,7 +49,19 @@ export default {
       msg_send: "",
       all_posts: [],
       all_users: [],
+      connected: false,
       ws: null
+    }
+  },
+  computed: {
+    wait_message: function() {
+      let wait_message = "Please wait for the server connection.";
+
+      if (this.connected) {
+        wait_message = "Connected to the server!";
+      }
+
+      return wait_message;
     }
   },
   watch: {
@@ -92,6 +104,10 @@ export default {
         let sent = JSON.stringify(data);
         console.log(sent);
         this.ws.send(sent);
+
+        if (this.ws.readyState === 1) {
+          this.connected = true;
+        }
       }
     }
   },
